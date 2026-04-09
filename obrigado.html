@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Você está na lista! — Curso IA para Profissionais</title>
+  <meta name="description" content="Cadastro confirmado. Você será o primeiro a saber quando abrir as inscrições." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0a0f1e;
+      --bg-card:  #111827;
+      --bg-card2: #1a2236;
+      --primary:  #6366f1;
+      --accent:   #10b981;
+      --text:     #f1f5f9;
+      --muted:    #94a3b8;
+      --border:   rgba(99,102,241,0.2);
+      --max:      600px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* confetti burst */
+    .confetti-wrap {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .dot {
+      position: absolute;
+      top: -10px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      animation: fall linear forwards;
+    }
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* card */
+    .card {
+      position: relative;
+      z-index: 1;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 48px 32px;
+      max-width: var(--max);
+      width: 100%;
+      text-align: center;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #10b981, #6366f1, #c084fc);
+    }
+
+    .check-circle {
+      width: 80px; height: 80px;
+      background: rgba(16,185,129,0.12);
+      border: 2px solid rgba(16,185,129,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 36px;
+      animation: pop 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+    @keyframes pop {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    h1 {
+      font-size: clamp(24px, 5vw, 32px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: #fff;
+      animation: fadeUp 0.4s 0.15s ease both;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      line-height: 1.6;
+      animation: fadeUp 0.4s 0.25s ease both;
+    }
+    .subtitle strong { color: var(--text); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* steps */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+      text-align: left;
+      animation: fadeUp 0.4s 0.35s ease both;
+    }
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .step-num {
+      width: 28px; height: 28px;
+      background: linear-gradient(135deg, #6366f1, #7c3aed);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+      color: white;
+      flex-shrink: 0;
+    }
+    .step-text { font-size: 14px; color: var(--muted); line-height: 1.5; }
+    .step-text strong { color: var(--text); display: block; margin-bottom: 2px; }
+
+    /* share */
+    .share-section {
+      animation: fadeUp 0.4s 0.45s ease both;
+    }
+    .share-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .share-btns {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      background: var(--bg-card2);
+      color: var(--text);
+      transition: all 0.15s;
+    }
+    .share-btn:hover {
+      border-color: var(--primary);
+      background: rgba(99,102,241,0.08);
+    }
+    .share-btn.linkedin { border-color: rgba(0,119,181,0.4); }
+    .share-btn.linkedin:hover { background: rgba(0,119,181,0.1); }
+    .share-btn.whatsapp { border-color: rgba(37,211,102,0.4); }
+    .share-btn.whatsapp:hover { background: rgba(37,211,102,0.08); }
+
+    /* back link */
+    .back-link {
+      margin-top: 28px;
+      font-size: 13px;
+      color: var(--muted);
+      animation: fadeUp 0.4s 0.55s ease both;
+    }
+    .back-link a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .back-link a:hover { text-decoration: underline; }
+  </style>
+</head>
+
+<body>
+
+  <!-- Confetti -->
+  <div class="confetti-wrap" id="confetti"></div>
+
+  <div class="card">
+    <div class="check-circle">🎉</div>
+
+    <h1>Você está na lista!</h1>
+
+    <p class="subtitle">
+      Cadastro confirmado. Você será o <strong>primeiro a saber</strong>
+      quando as inscrições abrirem — com acesso ao desconto exclusivo de early bird.
+    </p>
+
+    <!-- Próximos passos -->
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Confira seu e-mail</strong>
+          Enviamos uma confirmação. Se não aparecer em 5 minutos, cheque a pasta de spam.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Fique de olho na caixa de entrada</strong>
+          Nos próximos dias você receberá conteúdos práticos e a prévia exclusiva do curso.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Abertura com desconto early bird</strong>
+          Quando as inscrições abrirem, você terá 7 dias para garantir o menor preço.
+        </div>
+      </div>
+    </div>
+
+    <!-- Compartilhar -->
+    <div class="share-section">
+      <p class="share-label">Conhece alguém que também deveria estar aqui?</p>
+      <div class="share-btns">
+        <a class="share-btn linkedin" id="btn-linkedin" href="#" target="_blank" rel="noopener">
+          💼 Compartilhar no LinkedIn
+        </a>
+        <a class="share-btn whatsapp" id="btn-whatsapp" href="#" target="_blank" rel="noopener">
+          💬 Enviar no WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <p class="back-link">
+      Quer revisar a página? <a href="index.html">Voltar ao início</a>
+    </p>
+  </div>
+
+  <script>
+    // ── Confetti ──────────────────────────────────────────────
+    const colors = ['#6366f1','#c084fc','#f59e0b','#10b981','#818cf8','#fde68a'];
+    const wrap   = document.getElementById('confetti');
+
+    for (let i = 0; i < 60; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'dot';
+      dot.style.cssText = `
+        left: ${Math.random() * 100}%;
+        background: ${colors[Math.floor(Math.random() * colors.length)]};
+        width:  ${4 + Math.random() * 6}px;
+        height: ${4 + Math.random() * 6}px;
+        border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+        animation-duration: ${1.5 + Math.random() * 2}s;
+        animation-delay: ${Math.random() * 0.8}s;
+      `;
+      wrap.appendChild(dot);
+    }
+
+    // ── Share links ───────────────────────────────────────────
+    // TODO: substitua PAGE_URL pela URL real da página de captura
+    const PAGE_URL = encodeURIComponent(window.location.origin + '/index.html');
+    const MSG      = encodeURIComponent('Acabei de entrar na lista do Curso IA para Profissionais — o único com módulo para cada área. Vale conferir!');
+
+    document.getElementById('btn-linkedin').href =
+      `https://www.linkedin.com/sharing/share-offsite/?url=${PAGE_URL}`;
+
+    document.getElementById('btn-whatsapp').href =
+      `https://wa.me/?text=${MSG}%20${PAGE_URL}`;
+  </script>
+
+</body>
+</html>

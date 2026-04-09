@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curso IA para Profissionais — Seja Avisado Primeiro</title>
+  <meta name="description" content="Aprenda a usar Inteligência Artificial no seu trabalho em dias, não meses. Mesmo sem saber programar. O único curso de IA segmentado pela sua área profissional." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Curso IA para Profissionais" />
+  <meta property="og:description" content="Aprenda a usar IA no trabalho em dias, não meses. Sem programação." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0a0f1e;
+      --bg-card:   #111827;
+      --bg-card2:  #1a2236;
+      --primary:   #6366f1;
+      --primary-h: #818cf8;
+      --accent:    #f59e0b;
+      --text:      #f1f5f9;
+      --text-muted:#94a3b8;
+      --border:    rgba(99,102,241,0.2);
+      --radius:    14px;
+      --max:       640px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      background: linear-gradient(90deg, #4f46e5, #7c3aed);
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .topbar span { opacity: 0.9; }
+    .topbar strong { color: #fde68a; }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-badge {
+      background: var(--primary);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 20px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 72px 24px 56px;
+      text-align: center;
+      max-width: var(--max);
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(99,102,241,0.15);
+      border: 1px solid rgba(99,102,241,0.3);
+      color: #a5b4fc;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .hero-tag::before { content: '✦'; font-size: 10px; }
+
+    h1 {
+      font-size: clamp(28px, 6vw, 46px);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, #818cf8, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(15px, 2.5vw, 18px);
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-sub strong { color: var(--text); }
+
+    /* ── FORM ── */
+    .form-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      max-width: 460px;
+      margin: 0 auto 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .form-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #6366f1, #c084fc, #6366f1);
+    }
+
+    .form-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      text-align: left;
+      display: block;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      background: var(--bg-card2);
+      border: 1px solid rgba(99,102,241,0.25);
+      border-radius: 10px;
+      padding: 13px 16px;
+      font-size: 15px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input::placeholder { color: #475569; }
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+    }
+
+    .btn {
+      width: 100%;
+      background: linear-gradient(135deg, #6366f1, #7c3aed);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 15px 24px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+      transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+      box-shadow: 0 4px 20px rgba(99,102,241,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(99,102,241,0.45);
+    }
+    .btn:active { transform: translateY(0); }
+    .btn-icon { font-size: 18px; }
+
+    .form-note {
+      font-size: 12px;
+      color: #475569;
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    /* ── SUCCESS ── */
+    .success-msg {
+      display: none;
+      background: rgba(16,185,129,0.1);
+      border: 1px solid rgba(16,185,129,0.3);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+      color: #6ee7b7;
+      max-width: 460px;
+      margin: 0 auto 16px;
+    }
+    .success-msg h3 { font-size: 18px; margin-bottom: 8px; }
+    .success-msg p { font-size: 14px; opacity: 0.85; }
+
+    /* ── SOCIAL PROOF ── */
+    .social-proof {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 0 auto 56px;
+      padding: 0 24px;
+      max-width: var(--max);
+    }
+    .avatars {
+      display: flex;
+    }
+    .avatar {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+      margin-left: -8px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-card2);
+    }
+    .avatar:first-child { margin-left: 0; }
+    .proof-text {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .proof-text strong { color: var(--text); }
+    .stars { color: #f59e0b; font-size: 13px; letter-spacing: -1px; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 24px 56px;
+    }
+
+    /* ── BULLETS ── */
+    .bullets-section {
+      max-width: var(--max);
+      margin: 0 auto 56px;
+      padding: 0 24px;
+    }
+    .section-label {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 28px;
+    }
+
+    .bullets-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .bullet-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .bullet-card:hover {
+      border-color: rgba(99,102,241,0.4);
+      transform: translateX(4px);
+    }
+    .bullet-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+      width: 44px; height: 44px;
+      background: rgba(99,102,241,0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .bullet-text h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+    .bullet-text p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── FERRAMENTAS ── */
+    .tools-section {
+      max-width: var(--max);
+      margin: 0 auto 56px;
+      padding: 0 24px;
+      text-align: center;
+    }
+    .tools-label {
+      font-size: 12px;
+      color: #475569;
+      font-weight: 500;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .tools-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+    .tool-tag {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* ── AREAS ── */
+    .areas-section {
+      max-width: var(--max);
+      margin: 0 auto 56px;
+      padding: 0 24px;
+      text-align: center;
+    }
+    .areas-section h2 {
+      font-size: clamp(20px, 4vw, 26px);
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .areas-section p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .area-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .area-card:hover {
+      border-color: var(--primary);
+      color: var(--text);
+      background: rgba(99,102,241,0.08);
+    }
+    .area-card .area-icon { font-size: 20px; display: block; margin-bottom: 4px; }
+
+    /* ── CTA FINAL ── */
+    .cta-final {
+      max-width: var(--max);
+      margin: 0 auto 56px;
+      padding: 0 24px;
+    }
+    .cta-box {
+      background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(124,58,237,0.15));
+      border: 1px solid rgba(99,102,241,0.3);
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .cta-box h2 {
+      font-size: clamp(20px, 4vw, 24px);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .cta-box p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .cta-box .btn { max-width: 400px; margin: 0 auto; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      font-size: 12px;
+      color: #334155;
+    }
+    footer a { color: #475569; text-decoration: none; }
+    footer a:hover { color: var(--text-muted); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero, .form-wrap, .bullet-card {
+      animation: fadeUp 0.5s ease both;
+    }
+    .bullet-card:nth-child(2) { animation-delay: 0.1s; }
+    .bullet-card:nth-child(3) { animation-delay: 0.2s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 480px) {
+      .areas-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero { padding: 48px 20px 40px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <span>🔥 Early bird exclusivo para quem entrar na lista —
+      <strong>desconto especial no lançamento</strong>
+    </span>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">
+      IA para Profissionais
+      <span class="logo-badge">Em breve</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">Novo curso online</div>
+
+    <h1>
+      Aprenda a usar <em>Inteligência Artificial</em>
+      no seu trabalho — em dias, não meses
+    </h1>
+
+    <p class="hero-sub">
+      Mesmo sem saber programar. Mesmo sem background técnico.<br />
+      <strong>O único curso de IA segmentado pela sua área profissional.</strong>
+    </p>
+
+    <!-- FORM -->
+    <div class="form-wrap" id="form-wrap">
+      <label class="form-label">Seja avisado primeiro e garanta seu desconto de early bird 👇</label>
+      <form class="input-group" id="capture-form" onsubmit="handleSubmit(event)">
+        <input type="text"  id="field-name"  name="name"  placeholder="Seu nome" required autocomplete="name" />
+        <input type="email" id="field-email" name="email" placeholder="Seu melhor e-mail" required autocomplete="email" />
+        <button type="submit" class="btn">
+          <span class="btn-icon">🚀</span>
+          Quero ser avisado primeiro →
+        </button>
+      </form>
+      <p class="form-note">🔒 Sem spam. Cancele quando quiser.</p>
+    </div>
+
+    <!-- SUCCESS STATE -->
+    <div class="success-msg" id="success-msg">
+      <h3>🎉 Você está na lista!</h3>
+      <p>Confira seu e-mail — enviamos uma confirmação.<br />
+         Você será o primeiro a saber quando abrir as inscrições.</p>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <div class="social-proof">
+    <div class="avatars">
+      <div class="avatar">👩</div>
+      <div class="avatar">👨</div>
+      <div class="avatar">👩</div>
+      <div class="avatar">👨</div>
+      <div class="avatar">+</div>
+    </div>
+    <div class="proof-text">
+      <div class="stars">★★★★★</div>
+      <strong>+247 profissionais</strong> já estão na lista
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BULLETS -->
+  <section class="bullets-section">
+    <p class="section-label">O que você vai aprender</p>
+    <div class="bullets-grid">
+
+      <div class="bullet-card">
+        <div class="bullet-icon">⚡</div>
+        <div class="bullet-text">
+          <h3>Resultado em 20 minutos</h3>
+          <p>O primeiro módulo garante que você resolve uma tarefa real do seu trabalho com IA antes de terminar a primeira hora de curso.</p>
+        </div>
+      </div>
+
+      <div class="bullet-card">
+        <div class="bullet-icon">🎯</div>
+        <div class="bullet-text">
+          <h3>Módulo exclusivo para sua área</h3>
+          <p>Marketing, Vendas, RH, Finanças, Atendimento e Gestão — ferramentas e casos de uso específicos para o seu dia a dia profissional.</p>
+        </div>
+      </div>
+
+      <div class="bullet-card">
+        <div class="bullet-icon">🛠️</div>
+        <div class="bullet-text">
+          <h3>Ferramentas de 2025 — não de 2022</h3>
+          <p>ChatGPT, Claude, Gemini, Copilot 365, Make, Zapier IA, Gamma, Canva IA e muito mais. Tudo atualizado e prático.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FERRAMENTAS -->
+  <section class="tools-section">
+    <p class="tools-label">Ferramentas que você vai dominar</p>
+    <div class="tools-grid">
+      <span class="tool-tag">ChatGPT</span>
+      <span class="tool-tag">Claude</span>
+      <span class="tool-tag">Gemini</span>
+      <span class="tool-tag">Copilot 365</span>
+      <span class="tool-tag">Make</span>
+      <span class="tool-tag">Zapier IA</span>
+      <span class="tool-tag">Canva IA</span>
+      <span class="tool-tag">Gamma</span>
+      <span class="tool-tag">Notion IA</span>
+      <span class="tool-tag">Otter.ai</span>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ÁREAS -->
+  <section class="areas-section">
+    <h2>Feito para a sua área profissional</h2>
+    <p>Sem exemplos genéricos. Você aprende com casos do seu setor.</p>
+    <div class="areas-grid">
+      <div class="area-card"><span class="area-icon">📣</span>Marketing</div>
+      <div class="area-card"><span class="area-icon">💼</span>Vendas</div>
+      <div class="area-card"><span class="area-icon">👥</span>RH</div>
+      <div class="area-card"><span class="area-icon">💰</span>Finanças</div>
+      <div class="area-card"><span class="area-icon">🎧</span>Atendimento</div>
+      <div class="area-card"><span class="area-icon">📊</span>Gestão</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="cta-box">
+      <h2>Garanta seu desconto de early bird 🔑</h2>
+      <p>Quem entrar na lista será o primeiro a saber da abertura — com acesso exclusivo ao melhor preço.</p>
+      <button class="btn" onclick="document.getElementById('field-name').focus(); window.scrollTo({top:0,behavior:'smooth'})">
+        <span class="btn-icon">🚀</span>
+        Quero meu acesso early bird →
+      </button>
+      <p style="margin-top:12px;font-size:12px;color:#475569;">🔒 Sem spam. Cancele quando quiser.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Curso IA para Profissionais &nbsp;·&nbsp;
+      <a href="#">Política de Privacidade</a> &nbsp;·&nbsp;
+      <a href="#">Contato</a>
+    </p>
+  </footer>
+
+  <script>
+    // ─── INTEGRAÇÃO MAILERLITE ───────────────────────────────
+    // TODO: substitua a função abaixo pela integração real do MailerLite
+    // Opção A (MailerLite embed): apague este script e use o código HTML
+    //   gerado em MailerLite > Formulários > Código de Incorporação
+    // Opção B (API): use a URL abaixo com seu API key e group ID
+    //
+    // const ML_API_KEY  = 'SEU_API_KEY_AQUI';
+    // const ML_GROUP_ID = 'SEU_GROUP_ID_AQUI';
+    // ────────────────────────────────────────────────────────
+
+    async function handleSubmit(e) {
+      e.preventDefault();
+
+      const name  = document.getElementById('field-name').value.trim();
+      const email = document.getElementById('field-email').value.trim();
+      const btn   = e.target.querySelector('button');
+
+      if (!name || !email) return;
+
+      btn.disabled = true;
+      btn.innerHTML = '<span class="btn-icon">⏳</span> Processando...';
+
+      try {
+        // ── Descomente e configure quando MailerLite estiver pronto: ──
+        //
+        // await fetch('https://connect.mailerlite.com/api/subscribers', {
+        //   method: 'POST',
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //     'Authorization': `Bearer ${ML_API_KEY}`
+        //   },
+        //   body: JSON.stringify({
+        //     email,
+        //     fields: { name },
+        //     groups: [ML_GROUP_ID]
+        //   })
+        // });
+
+        // Simulação enquanto API não está configurada:
+        await new Promise(r => setTimeout(r, 800));
+
+        // Mostrar sucesso
+        document.getElementById('form-wrap').style.display  = 'none';
+        document.getElementById('success-msg').style.display = 'block';
+
+        // Opcional: redirecionar para página de obrigado
+        // window.location.href = '/obrigado.html';
+
+      } catch (err) {
+        btn.disabled = false;
+        btn.innerHTML = '<span class="btn-icon">🚀</span> Quero ser avisado primeiro →';
+        alert('Ops, algo deu errado. Tente novamente.');
+      }
+    }
+
+    // Contador de leads (atualizar manualmente ou via API)
+    // document.querySelector('.proof-text strong').textContent = '+321 profissionais';
+  </script>
+
+</body>
+</html>
